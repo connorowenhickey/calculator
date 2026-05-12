@@ -1,7 +1,7 @@
 const buttonContainer = document.querySelector('.button-container')
 const screen = document.querySelector('.screen')
 const screenText = document.querySelector('#screen-text')
-const buttons = ['7', '8', '9', 'DEL', 'AC', '4', '5', '6', 'X', '/', '1', '2', '3', '+', '-', '0','.','x10^','Ans','=']
+const buttons = ['7', '8', '9', 'DEL', 'AC', '4', '5', '6', 'X', '/', '1', '2', '3', '+', '-', '0','.','^','Root','=']
 
 let a = ''
 let b = ''
@@ -72,16 +72,29 @@ function divide(a,b) {
     return a/b
 }
 
-function operate(a,b='',op='') {
+function power(a,b) {
+    return a**b
+}
+
+function sqrooot(a) {
+    if (a<0) return 'Math Error: Cannot root negative number'
+    return a**(1/2)
+}
+
+function operate(a,b,op) {
     switch(op) {
         case '+':
-            return add(a,b=0)
+            return add(a,b)
         case '-':
             return subtract(a,b)
         case 'X':
             return multiply(a,b)
         case '/':
             return divide(a,b)
+        case '^':
+            return power(a,b)
+        case 'Root':
+            return sqrooot(a)
         default:
             return 'Invalid Operator'
     }
